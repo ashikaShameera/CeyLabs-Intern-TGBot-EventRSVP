@@ -5,16 +5,20 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from utils.event_info import event_infor_message, help_info_message
 from utils.registation import register, name, email, tickets, cancel, NAME,EMAIL, TICKETS
 
+from dotenv import load_dotenv
+import os
 
-Token:Final='7458561002:AAE5_kS0g_1oU45cEjxL6ix2X5dmgcec7fA'
-BOT_USERNAME: Final='Event_Ticketing_Telegram_bot'
+load_dotenv()
+
+Token:Final=os.getenv('TOKEN')
+BOT_USERNAME: Final=os.getenv('BOT_USERNAME')
 
 # Commands
 async def start_command(update:Update,context:ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(event_infor_message(),parse_mode="HTML")
 
 async def help_command(update:Update,context:ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(help_info_message())
+    await update.message.reply_text(help_info_message(),parse_mode="HTML")
 
 #Cansel the registation process
 async def cancel_command(update:Update,context:ContextTypes.DEFAULT_TYPE):

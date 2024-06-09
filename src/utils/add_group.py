@@ -9,11 +9,14 @@ from telethon.tl.types import InputPeerUser,PeerUser
 # For normal chats
 from telethon.tl.functions.messages import AddChatUserRequest
 
-api_id = '27066935'
-api_hash = '4f21d03b65fe9a736ca7c79422d9ac2d'
-admin_phone_number = '+94777973793'
-channel_id =-1002215923063    
-channel_access_hash =6891311242554153966
+from dotenv import load_dotenv
+import os
+
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
+admin_phone_number = os.getenv('ADMIN_PHONE_NUMBER')
+channel_id =os.getenv('CHANNEL_ID')
+channel_access_hash =os.getenv('CHANNEL_ACCESS_HASH')
 
 # Adding user to the Telegram group
 async def add_to_group(update: Update, context: ContextTypes.DEFAULT_TYPE,tickets_no): 

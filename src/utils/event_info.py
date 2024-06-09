@@ -43,7 +43,7 @@ def ticket_info_message(ticket_id, event_name, event_date, created_time,email):
 
 def help_info_message():
     help_message = (
-        "Welcome to the Event Ticketing Bot! 🎟️\n\n"
+        f"<b>Welcome to the Event Ticketing Bot! </b>🎟️\n\n"
         "To start registering for tickets, use the /register command.\n\n"
         "Steps to follow:\n"
         "1. Provide your name when prompted.\n"
