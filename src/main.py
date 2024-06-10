@@ -1,5 +1,5 @@
 from typing import Final
-from telegram import Update,Bot
+from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes,ConversationHandler
 
 from utils.event_info import event_infor_message, help_info_message
@@ -17,6 +17,7 @@ BOT_USERNAME: Final=os.getenv('BOT_USERNAME')
 async def start_command(update:Update,context:ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(event_infor_message(),parse_mode="HTML")
 
+#Give the help message
 async def help_command(update:Update,context:ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(help_info_message(),parse_mode="HTML")
 
@@ -49,7 +50,7 @@ if __name__=='__main__':
     
     
     #Polls the bot
-    print("polling")
+    print("polling...........")
     app.run_polling()
 
     

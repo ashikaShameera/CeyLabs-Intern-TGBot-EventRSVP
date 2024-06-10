@@ -5,4 +5,4 @@
 .db
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
+src/utils/__pycache__/

@@ -15,15 +15,18 @@ def validate_email(email: str) -> bool:
     regex = r'^\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     return re.match(regex, email)
 
+#start registering process
 async def register(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Starting registration for free tickets... \n Please enter your name:")
     return NAME
 
+# get name provided by user
 async def name(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data['name'] = update.message.text
     await update.message.reply_text("Please enter your email:")
     return EMAIL
 
+# get email by user and validate it
 async def email(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data['email'] = update.message.text
     if not validate_email(context.user_data['email']):
@@ -32,6 +35,7 @@ async def email(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("How many tickets do you want?")
     return TICKETS
 
+# This use to get ticketes and done the processes of send tickets,add to group and put data to database
 async def tickets(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         context.user_data['tickets'] = int(update.message.text)
